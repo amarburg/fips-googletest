@@ -25,6 +25,12 @@ endif()
 
 if (FIPS_CLANG)
     set_target_properties(googletest PROPERTIES COMPILE_FLAGS "${GOOGLETEST_NO_EXCEPTIONS} ${GOOGLETEST_NO_RTTI}")
+
+    ## This was found to be required on XCode 8.0 / Apple LLVM version 8.0.0
+    if( FIPS_MACOS )
+      fips_include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+      fips_include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+    endif()
 elseif(FIPS_GCC)
     set_target_properties(googletest PROPERTIES COMPILE_FLAGS "${GOOGLETEST_NO_EXCEPTIONS} ${GOOGLETEST_NO_RTTI}")
 elseif(FIPS_MSVC)
