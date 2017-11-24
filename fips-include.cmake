@@ -6,6 +6,10 @@
 
 set(FIPS_GOOGLETESTDIR ${CMAKE_CURRENT_LIST_DIR})
 
+if( FIPS_MACOS )
+  add_definitions( -DGTEST_USE_OWN_TR1_TUPLE )
+endif()
+
 #-------------------------------------------------------------------------------
 #   gtest_begin(name)
 #   Begin defining a unit test.
