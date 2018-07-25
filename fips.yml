@@ -9,3 +9,5 @@ exports:
     modules:
         googletest: gtest
 
+defines:
+    FIPS_RTTI:true
